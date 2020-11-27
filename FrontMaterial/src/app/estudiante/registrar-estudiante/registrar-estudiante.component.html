@@ -1,0 +1,72 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="fill-primary-contrast" fxFlex="auto" fxLayoutAlign="center center">
+        Registrar Estudiante
+    </div>
+    <button type="button" mat-dialog-close tabindex="-1">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <div fxLayout="column" fxLayoutGap="8px">
+        <div fxLayout="row" fxLayoutGap="8px">
+            <div fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                    <mat-label> Nombres</mat-label>
+                    <input matInput placeholder="Nombres" [(ngModel)]="nom_persona"/>
+                </mat-form-field>
+            </div>
+            <div fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                    <mat-label> Apellido Paterno</mat-label>
+                    <input matInput placeholder="Apellido Paterno" [(ngModel)]="ape_pate_pers"/>
+                </mat-form-field>     
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="8px">
+            <div fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                    <mat-label> Apellido Materno</mat-label>
+                    <input matInput placeholder="Apellido Materno" [(ngModel)]="ape_mate_pers"/>
+                </mat-form-field>
+            </div>
+            <div fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                    <mat-label> Grado</mat-label>
+                    <mat-select  [(ngModel)]="nid_grado">
+                        <mat-option *ngFor="let grado of grados" 
+                                    [value]="grado.nid_grado">
+                                    {{grado.desc_grado}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="8px">
+            <div fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                    <mat-label> Fecha Nacimiento</mat-label>
+                    <input type="date" matInput [(ngModel)]="fecha_naci" (ngModelChange)="calcularEdad()"/>
+                </mat-form-field>
+            </div>
+            <div fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                    <mat-label> Edad</mat-label>
+                    <input matInput type="text" [(ngModel)]="edad" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="8px">
+            <mat-form-field appearance="outline">
+                <mat-label> foto </mat-label>
+                <input matInput placeholder="buscar" [(ngModel)]="foto_ruta"/>
+            </mat-form-field>
+        </div>
+    </div>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="space-between center">
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" cdkFocusInitial (click)="guardarEstudiante()">Guardar</button>
+</mat-dialog-actions>

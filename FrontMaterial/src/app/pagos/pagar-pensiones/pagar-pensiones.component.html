@@ -1,0 +1,53 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="fill-primary-contrast" fxFlex="auto" fxLayoutAlign="center center">
+        Pagar
+    </div>
+    <button type="button" mat-dialog-close tabindex="-1">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <div fxLayout="column" fxLayoutGap="8px">
+
+        <mat-card>
+              <div fxFlex="grow" fxLayoutGap="8px" fxLayout="column">
+              
+                <table [dataSource]="movimientos" class="table" mat-table>
+
+                    
+              
+                    <ng-container matColumnDef="Pension">
+                        <th mat-header-cell *matHeaderCellDef> Pension </th>
+                        <td mat-cell *matCellDef="let element"> {{element.desc_pension}} </td>
+                      </ng-container>
+                    
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="Fecha">
+                        <th mat-header-cell *matHeaderCellDef> Fecha vencimiento </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fecha_pago}} </td>
+                      </ng-container>
+                    
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="Monto">
+                        <th mat-header-cell *matHeaderCellDef> Monto </th>
+                        <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
+                      </ng-container>
+                    
+                      <!-- Symbol Column -->
+                    
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+              
+            </div>
+        </mat-card>
+        <p>Total : {{total}}</p>
+    </div>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="space-between center">
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" cdkFocusInitial (click)="pagarAhora()">Pagar</button>
+</mat-dialog-actions>

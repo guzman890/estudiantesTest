@@ -1,0 +1,52 @@
+<div fxLayoutGap="8px" >
+  <mat-card  fxLayoutGap="8px">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field appearance="outline">
+        <mat-label> Buscar</mat-label>
+        <input matInput placeholder="buscar" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="registrarEstudiante()" >Nuevo</button>      
+    </div>
+      
+  </mat-card>
+</div>
+
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Estudiantes Encontrados</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayoutGap="8px" >
+      <mat-grid-list cols="3" rowheight="3:1" fxLayoutGap="8px">
+
+        <mat-grid-tile *ngFor="let persona of personas" fxLayoutGap="8px">
+          <mat-card class="example-card" >
+            
+            <img mat-card-image src="https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg" alt="Photo of a Shiba Inu">
+            
+            <mat-card-header>
+              <mat-card-title>{{persona.nom_persona}}</mat-card-title>
+              <mat-card-subtitle>{{persona.ape_pate_pers + " "+ persona.ape_mate_pers}}</mat-card-subtitle>
+            </mat-card-header>
+            
+            <mat-card-content>
+              <p>
+                {{persona.edad}} años
+              </p>
+              <p>
+                {{persona.gradoname}}
+              </p>
+            </mat-card-content>
+    
+            <mat-card-actions>
+              <button mat-button>Editar</button>
+              <button mat-button>Eliminar</button>
+            </mat-card-actions>
+    
+          </mat-card> 
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-card-content>
+</mat-card>
